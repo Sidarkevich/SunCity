@@ -1,18 +1,44 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class CitizenPsyche : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public enum PsycheStatus
     {
-        
+        Happy,
+        Undecided,
+        Sad
     }
 
-    // Update is called once per frame
-    void Update()
+    [HideInInspector] public UnityEvent<PsycheStatus> PsycheStatusUpdateEvent;
+
+    private int _happinessPoints;
+    private PsycheStatus _psycheStatus;
+
+    public int HappinessPoints
     {
-        
+        get => _happinessPoints;
+        set
+        {
+            if (value > 7)
+            {
+                _psycheStatus = PsycheStatus.Happy;
+                PsycheStatusUpdateEvent?.Invoke(_psycheStatus);
+            }
+            else if ( value > 5)
+            {
+                _psycheStatus = PsycheStatus.Undecided;
+                PsycheStatusUpdateEvent?.Invoke(_psycheStatus);
+            }
+            else
+            {
+                _psycheStatus = PsycheStatus.Sad;
+                PsycheStatusUpdateEvent?.Invoke(_psycheStatus);
+            }
+
+            _happinessPoints = value;
+        }
     }
 }

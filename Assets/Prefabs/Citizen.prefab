@@ -98,8 +98,8 @@ NavMeshAgent:
   m_GameObject: {fileID: 1535401645203081108}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
-  m_Speed: 3.5
+  m_Radius: 0.1
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -123,6 +123,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bf3a86bb836ddb48a6ea9eb3b2ea6b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  StartMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  FinishMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1535401645203081101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +141,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 979b3c61ab24eef49962d8118fb72082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PsycheStatusUpdateEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &1535401645203081098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -147,6 +156,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37660a55906b99b46b3f03cf53447ffe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _colors:
+  - {r: 0, g: 1, b: 0.031424284, a: 1}
+  - {r: 1, g: 0.8307333, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0, a: 1}
+  _sprite: {fileID: 1535401645203081111}
 --- !u!114 &1535401645203081099
 MonoBehaviour:
   m_ObjectHideFlags: 0

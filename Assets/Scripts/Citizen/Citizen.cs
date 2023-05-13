@@ -24,6 +24,9 @@ public class Citizen : MonoBehaviour
         _movement.StartMovingEvent.AddListener(OnStartMoving);
         _movement.FinishMovingEvent.AddListener(OnFinishMoving);
 
+        _psyche.PsycheStatusUpdateEvent.AddListener(OnPsycheStatusUpdate);
+        _psyche.HappinessPoints = UnityEngine.Random.Range(1, 11);
+
         _movement.SetTarget(_directory.GetRandomInterest());
     }
     private void OnStartMoving()
@@ -36,5 +39,10 @@ public class Citizen : MonoBehaviour
         _status = Status.Free;
 
         _movement.SetTarget(_directory.GetRandomInterest());
+    }
+
+    private void OnPsycheStatusUpdate(CitizenPsyche.PsycheStatus status)
+    {
+        _view.UpdateView(status);
     }
 }

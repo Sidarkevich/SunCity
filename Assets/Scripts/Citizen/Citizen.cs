@@ -34,7 +34,7 @@ public class Citizen : MonoBehaviour
 
         _view.UpdateView(_psyche.Status);
 
-        _movement.SetTarget(_directory.GetRandomInterest());
+        _movement.SetTarget(_directory.GetInterest());
     }
     private void OnStartMoving()
     {
@@ -45,7 +45,7 @@ public class Citizen : MonoBehaviour
     {
         _status = Status.Free;
 
-        _movement.SetTarget(_directory.GetRandomInterest());
+        _movement.SetTarget(_directory.GetInterest());
     }
 
     private void OnPsycheStatusUpdate(CitizenPsyche.PsycheStatus status)

@@ -5,6 +5,8 @@ using UnityEngine;
 public class InterestZone : MonoBehaviour
 {
     [SerializeField] private int _interest;
+
+    public int Interest => _interest; 
     
     public Vector3 GetZonePosition()
     {

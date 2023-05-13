@@ -2,10 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public class CitizenMovement : MonoBehaviour
 {
+    [HideInInspector] public UnityEvent StartMovingEvent;
+    [HideInInspector] public UnityEvent FinishMovingEvent; 
+
     private NavMeshAgent _agent;
+    private bool _needCheck;
+
+    public void SetTarget(Vector3 targetPos)
+    {
+        _agent.SetDestination(targetPos);
+        _needCheck = true;
+        StartMovingEvent?.Invoke();
+    }
 
     private void Awake()
     {
@@ -14,8 +26,17 @@ public class CitizenMovement : MonoBehaviour
 		_agent.updateUpAxis = false;      
     }
 
-    public void SetTarget(Vector3 targetPos)
+    private void Update()
     {
-        _agent.SetDestination(targetPos);
+        if (!_needCheck)
+        {
+            return;
+        }
+
+        if (_agent.remainingDistance <= 0.2f)
+        {
+            _needCheck = false;
+            FinishMovingEvent?.Invoke();
+        }
     }
 }

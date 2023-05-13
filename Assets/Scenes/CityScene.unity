@@ -1608,6 +1608,10 @@ PrefabInstance:
       propertyPath: _directory
       value: 
       objectReference: {fileID: 136094607}
+    - target: {fileID: 1535401645203081101, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
+      propertyPath: InitValue
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1535401645203081108, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
       propertyPath: m_Name
       value: Citizen (4)
@@ -2178,6 +2182,10 @@ PrefabInstance:
       propertyPath: _directory
       value: 
       objectReference: {fileID: 136094607}
+    - target: {fileID: 1535401645203081101, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
+      propertyPath: InitValue
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 1535401645203081108, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
       propertyPath: m_Name
       value: Citizen (2)
@@ -2712,6 +2720,10 @@ PrefabInstance:
       propertyPath: _directory
       value: 
       objectReference: {fileID: 136094607}
+    - target: {fileID: 1535401645203081101, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
+      propertyPath: InitValue
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 1535401645203081108, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
       propertyPath: m_Name
       value: Citizen (1)
@@ -2783,6 +2795,10 @@ PrefabInstance:
       propertyPath: _directory
       value: 
       objectReference: {fileID: 136094607}
+    - target: {fileID: 1535401645203081101, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
+      propertyPath: InitValue
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 1535401645203081108, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
       propertyPath: m_Name
       value: Citizen (3)
@@ -2844,6 +2860,10 @@ PrefabInstance:
       propertyPath: _directory
       value: 
       objectReference: {fileID: 136094607}
+    - target: {fileID: 1535401645203081101, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
+      propertyPath: InitValue
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1535401645203081108, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
       propertyPath: m_Name
       value: Citizen

@@ -14,31 +14,55 @@ public class CitizenPsyche : MonoBehaviour
 
     [HideInInspector] public UnityEvent<PsycheStatus> PsycheStatusUpdateEvent;
 
+    [SerializeField] private int InitValue;
+
     private int _happinessPoints;
     private PsycheStatus _psycheStatus;
+
+    public PsycheStatus Status
+    {
+        get => _psycheStatus;
+        set
+        {
+            _psycheStatus = value;
+            PsycheStatusUpdateEvent?.Invoke(_psycheStatus);
+        }
+    }
 
     public int HappinessPoints
     {
         get => _happinessPoints;
         set
         {
-            if (value > 7)
+            if (value > 10)
+                value = 10;
+            if (value < 1)
+                value = 1;
+
+            _happinessPoints = value;
+
+            if (_happinessPoints > 7)
             {
-                _psycheStatus = PsycheStatus.Happy;
-                PsycheStatusUpdateEvent?.Invoke(_psycheStatus);
+                Status = PsycheStatus.Happy;
             }
-            else if ( value > 5)
+            else if (_happinessPoints > 5)
             {
-                _psycheStatus = PsycheStatus.Undecided;
-                PsycheStatusUpdateEvent?.Invoke(_psycheStatus);
+                Status = PsycheStatus.Undecided;
             }
             else
             {
-                _psycheStatus = PsycheStatus.Sad;
-                PsycheStatusUpdateEvent?.Invoke(_psycheStatus);
+                Status = PsycheStatus.Sad;
             }
-
-            _happinessPoints = value;
         }
+    }
+
+    public bool IsSad()
+    {
+        return (Status == PsycheStatus.Sad);
+    }
+
+    private void Start()
+    {
+        HappinessPoints = InitValue;
     }
 }

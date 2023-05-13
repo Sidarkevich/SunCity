@@ -11,6 +11,7 @@ public class Citizen : MonoBehaviour
     [SerializeField] private CitizenView _view;
 
     private Status _status;
+    public Citizen Companion;
 
     public enum Status
     {
@@ -25,7 +26,8 @@ public class Citizen : MonoBehaviour
         _movement.FinishMovingEvent.AddListener(OnFinishMoving);
 
         _psyche.PsycheStatusUpdateEvent.AddListener(OnPsycheStatusUpdate);
-        _psyche.HappinessPoints = UnityEngine.Random.Range(1, 11);
+
+        _view.UpdateView(_psyche.Status);
 
         _movement.SetTarget(_directory.GetRandomInterest());
     }
@@ -44,5 +46,45 @@ public class Citizen : MonoBehaviour
     private void OnPsycheStatusUpdate(CitizenPsyche.PsycheStatus status)
     {
         _view.UpdateView(status);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (Companion)
+        {
+            return;
+        }
+
+        var newCompanion = collider.GetComponent<Citizen>();
+        if (newCompanion.Companion)
+        {
+            return;
+        }
+
+        Companion = newCompanion;
+        newCompanion.Companion = this;
+
+        if (newCompanion._psyche.IsSad() || _psyche.IsSad())
+        {
+            var newValue = Mathf.Min(newCompanion._psyche.HappinessPoints, _psyche.HappinessPoints);
+
+            newCompanion._psyche.HappinessPoints = newValue;
+            _psyche.HappinessPoints = newValue;
+        }
+        else
+        {
+            
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collider)
+    {
+        var citizen = collider.GetComponent<Citizen>();
+
+        if (citizen && (Companion == citizen))
+        {
+            citizen.Companion = null;
+            Companion = null;
+        }
     }
 }

@@ -20,6 +20,11 @@ public class Citizen : MonoBehaviour
         Waiting
     }
 
+    private void Awake()
+    {
+        _directory = GameObject.FindAnyObjectByType<CityDirectory>();
+    }
+
     private void Start()
     {
         _movement.StartMovingEvent.AddListener(OnStartMoving);
@@ -89,5 +94,10 @@ public class Citizen : MonoBehaviour
             citizen.Companion = null;
             Companion = null;
         }
+    }
+
+    void OnMouseUpAsButton()
+    {
+        Destroy(gameObject);
     }
 }

@@ -8,6 +8,6 @@ public class CityDirectory : MonoBehaviour
 
     public Vector3 GetRandomInterest()
     {
-        return _interests[UnityEngine.Random.Range(0, _interests.Length-1)].GetZonePosition();
+        return _interests[UnityEngine.Random.Range(0, _interests.Length)].GetZonePosition();
     }
 }

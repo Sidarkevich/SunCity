@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CitizenView : MonoBehaviour
 {
-    [SerializeField] private Color[] _colors;
+    [SerializeField] private Sprite[] _masks;
     [SerializeField] private SpriteRenderer _sprite;
 
     public void UpdateView(CitizenPsyche.PsycheStatus status)
     {
-        _sprite.color = _colors[(int)status];
+        _sprite.sprite = _masks[(int)status];
     }
 }

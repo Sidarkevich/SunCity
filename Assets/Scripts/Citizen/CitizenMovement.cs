@@ -19,6 +19,11 @@ public class CitizenMovement : MonoBehaviour
         StartMovingEvent?.Invoke();
     }
 
+    public void ChangeSpeed(float value)
+    {
+        _agent.speed = value;
+    }
+
     private void Awake()
     {
 		_agent = GetComponent<NavMeshAgent>();

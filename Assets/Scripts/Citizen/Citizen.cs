@@ -13,7 +13,7 @@ public class Citizen : MonoBehaviour
 
     [SerializeField] private float _maxWaitTime;
 
-    public Citizen Companion;
+    private Citizen _companion;
 
     private void Awake()
     {
@@ -26,8 +26,7 @@ public class Citizen : MonoBehaviour
         _movement.FinishMovingEvent.AddListener(OnFinishMoving);
 
         _psyche.PsycheStatusUpdateEvent.AddListener(OnPsycheStatusUpdate);
-
-        _view.UpdateView(_psyche.Status);
+        OnPsycheStatusUpdate(_psyche.Status);
 
         _movement.SetTarget(_directory.GetInterest());
     }
@@ -43,6 +42,15 @@ public class Citizen : MonoBehaviour
 
     private void OnPsycheStatusUpdate(CitizenPsyche.PsycheStatus status)
     {
+        if (status == CitizenPsyche.PsycheStatus.Sad)
+        {
+            _movement.ChangeSpeed(1.5f);
+        }
+        else
+        {
+            _movement.ChangeSpeed(1.0f);
+        }
+
         _view.UpdateView(status);
     }
 
@@ -54,24 +62,24 @@ public class Citizen : MonoBehaviour
             return;
         }
 
-        if (Companion)
+        if (_companion)
         {
-            if (newCompanion == Companion)
+            if (newCompanion == _companion)
             {
-                newCompanion.Companion = null;
-                Companion = null;
+                newCompanion._companion = null;
+                _companion = null;
             }
 
             return;
         }
 
-        if (newCompanion.Companion)
+        if (newCompanion._companion)
         {
             return;
         }
 
-        Companion = newCompanion;
-        newCompanion.Companion = this;
+        _companion = newCompanion;
+        newCompanion._companion = this;
 
         if (newCompanion._psyche.IsSad() || _psyche.IsSad())
         {
@@ -93,10 +101,10 @@ public class Citizen : MonoBehaviour
     {
         var citizen = collider.GetComponent<Citizen>();
 
-        if (citizen && (Companion == citizen))
+        if (citizen && (_companion == citizen))
         {
-            citizen.Companion = null;
-            Companion = null;
+            citizen._companion = null;
+            _companion = null;
         }
     }
 
@@ -105,10 +113,5 @@ public class Citizen : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         callback?.Invoke();
-    }
-
-    private void OnMouseDown()
-    {
-        Destroy(gameObject);
     }
 }

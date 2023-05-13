@@ -73,7 +73,10 @@ public class Citizen : MonoBehaviour
         }
         else
         {
-            
+            var newValue = (newCompanion._psyche.HappinessPoints + _psyche.HappinessPoints) / 2;
+
+            newCompanion._psyche.HappinessPoints = Mathf.Max(newValue, newCompanion._psyche.HappinessPoints);
+            _psyche.HappinessPoints = Mathf.Max(newValue, _psyche.HappinessPoints);
         }
     }
 

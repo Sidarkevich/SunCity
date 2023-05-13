@@ -3410,7 +3410,9 @@ MonoBehaviour:
   - {fileID: 1383864587}
   - {fileID: 1463108926}
   - {fileID: 1530743433}
-  _citizen: {fileID: 1535401645203081108, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
+  _citizens:
+  - {fileID: 1535401645203081108, guid: c25031658c60fed419fa0c20d79b441f, type: 3}
+  - {fileID: 1535401645203081108, guid: 6857046b26a021f47b3a370f6f3509e8, type: 3}
   _citizensParent: {fileID: 3476918}
 --- !u!1001 &1998887647
 PrefabInstance:

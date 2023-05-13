@@ -5,7 +5,7 @@ using UnityEngine;
 public class CitizenSpawner : MonoBehaviour
 {
     [SerializeField] private Transform[] _spawnPoints;
-    [SerializeField] private GameObject _citizen;
+    [SerializeField] private GameObject[] _citizens;
     [SerializeField] private Transform _citizensParent;
 
     public void OnTenSecondsPassed(int secondsValue)
@@ -16,7 +16,7 @@ public class CitizenSpawner : MonoBehaviour
     private void SpawnCitizen()
     {
         var randomPos = _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Length)].position;
-        var newCitizen = Instantiate(_citizen, randomPos, Quaternion.identity);
+        var newCitizen = Instantiate(_citizens[Random.Range(0, _citizens.Length)], randomPos, Quaternion.identity);
         newCitizen.transform.SetParent(_citizensParent);
     }
 }

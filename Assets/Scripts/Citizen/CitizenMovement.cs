@@ -7,10 +7,15 @@ public class CitizenMovement : MonoBehaviour
 {
     private NavMeshAgent _agent;
 
-    void Start()
+    private void Awake()
     {
-		var agent = GetComponent<NavMeshAgent>();
-		agent.updateRotation = false;
-		agent.updateUpAxis = false;      
+		_agent = GetComponent<NavMeshAgent>();
+		_agent.updateRotation = false;
+		_agent.updateUpAxis = false;      
+    }
+
+    public void SetTarget(Vector3 targetPos)
+    {
+        _agent.SetDestination(targetPos);
     }
 }

@@ -55,12 +55,23 @@ public class Citizen : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (Companion)
+        var newCompanion = collider.GetComponent<Citizen>();
+        if (!newCompanion)
         {
             return;
         }
 
-        var newCompanion = collider.GetComponent<Citizen>();
+        if (Companion)
+        {
+            if (newCompanion == Companion)
+            {
+                newCompanion.Companion = null;
+                Companion = null;
+            }
+
+            return;
+        }
+
         if (newCompanion.Companion)
         {
             return;
@@ -96,7 +107,7 @@ public class Citizen : MonoBehaviour
         }
     }
 
-    void OnMouseUpAsButton()
+    void OnMouseDown()
     {
         Destroy(gameObject);
     }

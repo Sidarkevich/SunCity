@@ -180,6 +180,7 @@ MonoBehaviour:
   _movement: {fileID: 1535401645203081097}
   _psyche: {fileID: 1535401645203081101}
   _view: {fileID: 1535401645203081098}
+  _maxWaitTime: 1.5
   Companion: {fileID: 0}
 --- !u!58 &5714806876362254442
 CircleCollider2D:

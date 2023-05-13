@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Citizen : MonoBehaviour
 {
@@ -10,15 +11,9 @@ public class Citizen : MonoBehaviour
     [SerializeField] private CitizenPsyche _psyche;
     [SerializeField] private CitizenView _view;
 
-    private Status _status;
-    public Citizen Companion;
+    [SerializeField] private float _maxWaitTime;
 
-    public enum Status
-    {
-        Free,
-        Walking,
-        Waiting
-    }
+    public Citizen Companion;
 
     private void Awake()
     {
@@ -38,14 +33,12 @@ public class Citizen : MonoBehaviour
     }
     private void OnStartMoving()
     {
-        _status = Status.Walking;
+        
     }
 
     private void OnFinishMoving()
     {
-        _status = Status.Free;
-
-        _movement.SetTarget(_directory.GetInterest());
+        StartCoroutine(WaitingCoroutine(Random.Range(0, _maxWaitTime), () => _movement.SetTarget(_directory.GetInterest()) ));
     }
 
     private void OnPsycheStatusUpdate(CitizenPsyche.PsycheStatus status)
@@ -107,7 +100,14 @@ public class Citizen : MonoBehaviour
         }
     }
 
-    void OnMouseDown()
+    private IEnumerator WaitingCoroutine(float time, UnityAction callback)
+    {
+        yield return new WaitForSeconds(time);
+
+        callback?.Invoke();
+    }
+
+    private void OnMouseDown()
     {
         Destroy(gameObject);
     }

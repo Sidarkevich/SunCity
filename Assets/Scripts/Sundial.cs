@@ -7,7 +7,7 @@ public class Sundial : MonoBehaviour
 {
     public UnityEvent<int> SecondPassedEvent;
     public UnityEvent<int> FiveSecondsPassedEvent;
-    public UnityEvent<int> TenSecondsPassedEvent;
+    public UnityEvent<int> FifteenSecondsPassedEvent;
 
     private int _timeFromStart;
 
@@ -32,7 +32,7 @@ public class Sundial : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(1);
+            yield return new WaitForSeconds(1);
 
             _timeFromStart++;
             SecondPassedEvent?.Invoke(_timeFromStart);
@@ -42,9 +42,9 @@ public class Sundial : MonoBehaviour
                 FiveSecondsPassedEvent?.Invoke(_timeFromStart);
             }
 
-            if (_timeFromStart % 10 == 0)
+            if (_timeFromStart % 15 == 0)
             {
-                TenSecondsPassedEvent?.Invoke(_timeFromStart);
+                FifteenSecondsPassedEvent?.Invoke(_timeFromStart);
             }
         }
     } 

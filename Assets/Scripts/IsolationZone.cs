@@ -33,8 +33,11 @@ public class IsolationZone : MonoBehaviour
             return;
         }
 
-        _currentUser = null;
-        visitor.IsInIsolation = false;
+        if (visitor == _currentUser)
+        {
+            _currentUser = null;
+            visitor.IsInIsolation = false;
+        }
     }
 
     void OnTriggerStay2D(Collider2D collider)

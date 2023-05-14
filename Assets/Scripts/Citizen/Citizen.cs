@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class Citizen : MonoBehaviour
 {
     public bool IsInIsolation = false;
+    private Vector3 lastPosition;
+    private bool needSavePos;
 
     [SerializeField] private CityDirectory _directory;
 
@@ -119,12 +121,27 @@ public class Citizen : MonoBehaviour
 
     public void HandleOn()
     {
+        if (IsInIsolation)
+        {
+            needSavePos = false;
+            return;    
+        }
+
         _movement.enabled = false;
+        needSavePos = true;
+        lastPosition = transform.position;
     }
 
     public void HandleOff()
     {
         if (!IsInIsolation)
+        {
+            if (needSavePos)
+            {
+                transform.position = lastPosition;
+            }
+
             _movement.enabled = true;
+        }
     }
 }

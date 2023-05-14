@@ -42,7 +42,7 @@ public class Sundial : MonoBehaviour
                 FiveSecondsPassedEvent?.Invoke(_timeFromStart);
             }
 
-            if (_timeFromStart % 15 == 0)
+            if (_timeFromStart % 10 == 0)
             {
                 FifteenSecondsPassedEvent?.Invoke(_timeFromStart);
             }

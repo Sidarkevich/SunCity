@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Insulator : MonoBehaviour
 {
     [SerializeField] private IsolationZone[] _zones;
     [SerializeField] private Wallet _wallet;
-
+    [SerializeField] private Image _energyBar;
+ 
     public void GetCash()
     {
         foreach (var zone in _zones)
@@ -27,7 +29,7 @@ public class Insulator : MonoBehaviour
         {
             if (zone.User)
             {
-                zone.User.Psyche.HappinessPoints += 2;
+                zone.User.Psyche.HappinessPoints += 1;
             }
         }
     }

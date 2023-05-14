@@ -14,7 +14,7 @@ public class CitizenPsyche : MonoBehaviour
 
     [HideInInspector] public UnityEvent<PsycheStatus> PsycheStatusUpdateEvent;
 
-    private int _happinessPoints;
+    [SerializeField] private int _happinessPoints = -1;
     private PsycheStatus _psycheStatus;
 
     public PsycheStatus Status
@@ -61,6 +61,7 @@ public class CitizenPsyche : MonoBehaviour
 
     private void Awake()
     {
-        HappinessPoints = Random.Range(1, 11);
+        if (_happinessPoints == -1)
+            HappinessPoints = Random.Range(1, 7);
     }
 }

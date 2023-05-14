@@ -6,6 +6,7 @@ using UnityEngine.Events;
 public class Sundial : MonoBehaviour
 {
     public UnityEvent<int> SecondPassedEvent;
+    public UnityEvent<int> FiveSecondsPassedEvent;
     public UnityEvent<int> TenSecondsPassedEvent;
 
     private int _timeFromStart;
@@ -35,6 +36,11 @@ public class Sundial : MonoBehaviour
 
             _timeFromStart++;
             SecondPassedEvent?.Invoke(_timeFromStart);
+
+            if (_timeFromStart % 5 == 0)
+            {
+                FiveSecondsPassedEvent?.Invoke(_timeFromStart);
+            }
 
             if (_timeFromStart % 10 == 0)
             {

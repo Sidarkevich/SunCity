@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class Citizen : MonoBehaviour
 {
+    public bool IsInIsolation = false;
+
     [SerializeField] private CityDirectory _directory;
 
     [SerializeField] private CitizenMovement _movement;
@@ -113,5 +115,16 @@ public class Citizen : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         callback?.Invoke();
+    }
+
+    public void HandleOn()
+    {
+        _movement.enabled = false;
+    }
+
+    public void HandleOff()
+    {
+        if (!IsInIsolation)
+            _movement.enabled = true;
     }
 }

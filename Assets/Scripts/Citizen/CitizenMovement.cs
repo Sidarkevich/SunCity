@@ -44,4 +44,14 @@ public class CitizenMovement : MonoBehaviour
             FinishMovingEvent?.Invoke();
         }
     }
+
+    private void OnEnable()
+    {
+        _agent.enabled = true;
+    }
+
+    private void OnDisable()
+    {
+        _agent.enabled = false;
+    }
 }

@@ -63,5 +63,9 @@ public class CitizenPsyche : MonoBehaviour
     {
         if (_happinessPoints == -1)
             HappinessPoints = Random.Range(1, 7);
+        else
+        {
+            HappinessPoints = HappinessPoints;
+        }
     }
 }

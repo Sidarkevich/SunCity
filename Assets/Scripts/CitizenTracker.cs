@@ -13,6 +13,9 @@ public class CitizenTracker : MonoBehaviour
 
     [SerializeField] private GameObject _lossScreen;
     [SerializeField] private Sundial _sundial;
+    [SerializeField] private AudioManager _manager;
+
+    private bool _wasGameFinished;
 
     public void Registry(Citizen citizen)
     {
@@ -40,10 +43,18 @@ public class CitizenTracker : MonoBehaviour
             }
         }
 
+        if (_wasGameFinished)
+        {
+            return;
+        }
+
         if (_sadCount > _citizens.Count - _sadCount)
         {
+            _wasGameFinished = true;
+
             _sundial.StopClock();
             _lossScreen.SetActive(true);
+            _manager.PlayLoss();
         }
     }
 

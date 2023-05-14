@@ -6,6 +6,7 @@ using TMPro;
 public class Wallet : MonoBehaviour
 {
     [SerializeField] private TMP_Text _text;
+    [SerializeField] private AudioManager _manager;
 
     private int _value;
 
@@ -13,6 +14,7 @@ public class Wallet : MonoBehaviour
     {
         _value += value;
         _text.text = _value.ToString();
+        _manager.PlayMoney();
     }
 
     public bool SpendMoney(int value)
@@ -21,6 +23,7 @@ public class Wallet : MonoBehaviour
         {
             _value -= value;
             _text.text = _value.ToString();
+            _manager.PlayMoney();
             return true;
         }
         else

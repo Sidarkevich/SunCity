@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class Insulator : MonoBehaviour
 {
+    [SerializeField] private AudioManager _manager;
     [SerializeField] private IsolationZone[] _zones;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private Image _energyBar;
@@ -12,8 +13,8 @@ public class Insulator : MonoBehaviour
 
     [SerializeField] private Animation _animation;
 
-    private int _energyValue = 18;
-    private int _maxEnergy = 18;
+    private int _energyValue = 24;
+    private int _maxEnergy = 24;
  
     public void AddEnergy()
     {
@@ -59,6 +60,7 @@ public class Insulator : MonoBehaviour
 
             if (escaped > 0)
             {
+                _manager.PlayEscape();
                 _animation["EscapeAnim"].wrapMode = WrapMode.Once;
                 _animation.Play();
             }

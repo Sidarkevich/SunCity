@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class HappyMaker : MonoBehaviour
 {
-    [SerializeField] private int _placeCost;
     [SerializeField] private int _effectCount;
 
     private void OnTriggerEnter2D(Collider2D collider)

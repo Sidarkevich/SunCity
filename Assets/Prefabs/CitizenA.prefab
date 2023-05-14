@@ -97,6 +97,7 @@ MonoBehaviour:
   PsycheStatusUpdateEvent:
     m_PersistentCalls:
       m_Calls: []
+  _happinessPoints: -1
 --- !u!114 &1535401645203081098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eafab5af785a21742a4ff224da99a85d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _directory: {fileID: 0}
+  IsInIsolation: 0
   _movement: {fileID: 1535401645203081097}
   _psyche: {fileID: 1535401645203081101}
   _view: {fileID: 1535401645203081098}

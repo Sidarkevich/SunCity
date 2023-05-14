@@ -10,7 +10,7 @@ public class BuyButton : MonoBehaviour
     [SerializeField] private Wallet _wallet;
     [SerializeField] private int _price;
 
-    private void OnMouseUpAsButton()
+    public void OnClick()
     {
         if (_wallet.SpendMoney(_price))
         {

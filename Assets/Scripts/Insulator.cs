@@ -15,7 +15,7 @@ public class Insulator : MonoBehaviour
             {
                 if (zone.User.Psyche.IsSad())
                 {
-                    _wallet.AddMoney(1);
+                    _wallet.AddMoney(3);
                 }
             }
         }

@@ -54,11 +54,11 @@ public class Citizen : MonoBehaviour
     {
         if (status == CitizenPsyche.PsycheStatus.Sad)
         {
-            _movement.ChangeSpeed(1.5f);
+            _movement.ChangeSpeed(1.0f);
         }
         else
         {
-            _movement.ChangeSpeed(1.0f);
+            _movement.ChangeSpeed(1.5f);
         }
 
         _view.UpdateView(status);

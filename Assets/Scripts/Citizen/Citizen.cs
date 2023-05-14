@@ -5,12 +5,14 @@ using UnityEngine.Events;
 
 public class Citizen : MonoBehaviour
 {
+    public CitizenPsyche Psyche => _psyche;
     public bool IsInIsolation = false;
     private Vector3 lastPosition;
     private bool needSavePos;
     private bool isOnMap = true;
 
-    [SerializeField] private CityDirectory _directory;
+    private CityDirectory _directory;
+    private CitizenTracker _tracker;
 
     [SerializeField] private CitizenMovement _movement;
     [SerializeField] private CitizenPsyche _psyche;
@@ -23,6 +25,7 @@ public class Citizen : MonoBehaviour
     private void Awake()
     {
         _directory = GameObject.FindAnyObjectByType<CityDirectory>();
+        _tracker = GameObject.FindAnyObjectByType<CitizenTracker>();
     }
 
     private void Start()
@@ -34,6 +37,8 @@ public class Citizen : MonoBehaviour
         OnPsycheStatusUpdate(_psyche.Status);
 
         _movement.SetTarget(_directory.GetInterest());
+
+        _tracker.Registry(this);
     }
     private void OnStartMoving()
     {

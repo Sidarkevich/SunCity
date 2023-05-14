@@ -8,6 +8,7 @@ public class Citizen : MonoBehaviour
     public bool IsInIsolation = false;
     private Vector3 lastPosition;
     private bool needSavePos;
+    private bool isOnMap = true;
 
     [SerializeField] private CityDirectory _directory;
 
@@ -62,6 +63,11 @@ public class Citizen : MonoBehaviour
     {
         var newCompanion = collider.GetComponent<Citizen>();
         if (!newCompanion)
+        {
+            return;
+        }
+
+        if (!isOnMap || !newCompanion.isOnMap)
         {
             return;
         }
@@ -121,6 +127,8 @@ public class Citizen : MonoBehaviour
 
     public void HandleOn()
     {
+        isOnMap = false;
+
         if (IsInIsolation)
         {
             needSavePos = false;
@@ -142,6 +150,7 @@ public class Citizen : MonoBehaviour
             }
 
             _movement.enabled = true;
+            isOnMap = true;
         }
     }
 }

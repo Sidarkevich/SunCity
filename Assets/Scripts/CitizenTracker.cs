@@ -11,6 +11,9 @@ public class CitizenTracker : MonoBehaviour
     [SerializeField] private TMP_Text _happyText;
     [SerializeField] private TMP_Text _sadText;
 
+    [SerializeField] private GameObject _lossScreen;
+    [SerializeField] private Sundial _sundial;
+
     public void Registry(Citizen citizen)
     {
         _citizens.Add(citizen);
@@ -35,6 +38,12 @@ public class CitizenTracker : MonoBehaviour
             {
                 _sadCount++;
             }
+        }
+
+        if (_sadCount > _citizens.Count - _sadCount)
+        {
+            _sundial.StopClock();
+            _lossScreen.SetActive(true);
         }
     }
 

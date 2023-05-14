@@ -7,8 +7,13 @@ public class BuyButton : MonoBehaviour
 {
     public UnityEvent WasBoughtEvent;
 
-    [SerializeField] private Wallet _wallet;
+    private Wallet _wallet;
     [SerializeField] private int _price;
+
+    private void Start()
+    {
+        _wallet = GameObject.FindObjectOfType<Wallet>();
+    }
 
     public void OnClick()
     {

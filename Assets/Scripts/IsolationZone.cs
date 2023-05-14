@@ -5,7 +5,14 @@ using UnityEngine;
 public class IsolationZone : MonoBehaviour
 {
     private Citizen _currentUser;
-    public Citizen User => _currentUser;
+    public Citizen User
+    {
+        get => _currentUser;
+        set 
+        {
+            _currentUser = value;
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D collider)
     {

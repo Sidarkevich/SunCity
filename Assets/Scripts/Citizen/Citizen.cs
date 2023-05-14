@@ -8,7 +8,7 @@ public class Citizen : MonoBehaviour
     public CitizenPsyche Psyche => _psyche;
     public bool IsInIsolation = false;
     private Vector3 lastPosition;
-    private bool needSavePos;
+    public bool NeedSavePos;
     private bool isOnMap = true;
 
     private CityDirectory _directory;
@@ -136,12 +136,12 @@ public class Citizen : MonoBehaviour
 
         if (IsInIsolation)
         {
-            needSavePos = false;
+            NeedSavePos = false;
             return;    
         }
 
         _movement.enabled = false;
-        needSavePos = true;
+        NeedSavePos = true;
         lastPosition = transform.position;
     }
 
@@ -149,7 +149,7 @@ public class Citizen : MonoBehaviour
     {
         if (!IsInIsolation)
         {
-            if (needSavePos)
+            if (NeedSavePos)
             {
                 transform.position = lastPosition;
             }

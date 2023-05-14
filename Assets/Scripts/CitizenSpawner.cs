@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CitizenSpawner : MonoBehaviour
 {
+    public Transform[] SpawnPoints => _spawnPoints;
+
     [SerializeField] private Transform[] _spawnPoints;
     [SerializeField] private GameObject[] _citizens;
     [SerializeField] private Transform _citizensParent;

@@ -641,6 +641,7 @@ MonoBehaviour:
   - {fileID: 2034948277}
   _wallet: {fileID: 782968976}
   _energyBar: {fileID: 1916498930}
+  _spawner: {fileID: 1852713892}
 --- !u!1 &142651635
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class Insulator : MonoBehaviour
     [SerializeField] private IsolationZone[] _zones;
     [SerializeField] private Wallet _wallet;
     [SerializeField] private Image _energyBar;
+    [SerializeField] private CitizenSpawner _spawner;
 
     private int _energyValue = 18;
     private int _maxEnergy = 18;
@@ -36,7 +37,19 @@ public class Insulator : MonoBehaviour
         }
         else
         {
-            Debug.Log("AAA");
+            // THE ESCAPE
+            foreach (var zone in _zones)
+            {
+                if (zone.User)
+                {
+                    zone.User.IsInIsolation = false;
+                    zone.User.transform.position = _spawner.SpawnPoints[Random.Range(0, _spawner.SpawnPoints.Length)].position;
+                    zone.User.NeedSavePos = false;
+                    zone.User.HandleOff();
+
+                    zone.User = null;
+                }
+            }
 
             _energyValue = 0;
         }

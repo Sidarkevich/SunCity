@@ -10,6 +10,8 @@ public class Insulator : MonoBehaviour
     [SerializeField] private Image _energyBar;
     [SerializeField] private CitizenSpawner _spawner;
 
+    [SerializeField] private Animation _animation;
+
     private int _energyValue = 18;
     private int _maxEnergy = 18;
  
@@ -37,6 +39,8 @@ public class Insulator : MonoBehaviour
         }
         else
         {
+            var escaped = 0;
+
             // THE ESCAPE
             foreach (var zone in _zones)
             {
@@ -48,7 +52,15 @@ public class Insulator : MonoBehaviour
                     zone.User.HandleOff();
 
                     zone.User = null;
+
+                    escaped ++;
                 }
+            }
+
+            if (escaped > 0)
+            {
+                _animation["EscapeAnim"].wrapMode = WrapMode.Once;
+                _animation.Play();
             }
 
             _energyValue = 0;
